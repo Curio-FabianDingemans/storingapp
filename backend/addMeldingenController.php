@@ -10,6 +10,11 @@ $datetime = date('Y-m-d H:i:s', time());
 //1. Verbinding
 require_once 'conn.php';
 
+
+if(is_numeric($capacity)){
+    $capacity = 0;
+}
+
 //2. Query
 $query="INSERT INTO `meldingen`(`Title`, `Desc`, `Atraction`, `Reporter`, `Capacity`, `InsertDateTime`) VALUES(:Title, :Desc, :Atraction, :Reporter, :Capacity, :InsertDateTime)";
 

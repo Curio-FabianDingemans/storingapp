@@ -10,6 +10,10 @@ $reporter = $_POST['reporter'];
 //1. Verbinding
 require_once 'conn.php';
 
+if(is_numeric($capacity)){
+    $capacity = 0;
+}
+
 //2. Query
 $query="UPDATE `meldingen` SET `Title`=:Title, `Desc`=:Desc, `Atraction`=:Atraction, `Reporter`=:Reporter, `Capacity`=:Capacity WHERE Id=:Id";
 

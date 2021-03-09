@@ -21,7 +21,7 @@
         } ?>
 
         <div style="display: flex; justify-content: center; align-items: center; color: #666666;">
-            <table class="table-responsive table-hover">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Title</th>
@@ -34,7 +34,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        $query="SELECT * FROM `meldingen` ORDER BY DateTime DESC";
+                        $query="SELECT * FROM `meldingen` ORDER BY InsertDateTime DESC";
                         $statement=$conn->prepare($query);
                         $statement->execute();
                         $items=$statement->fetchAll(PDO::FETCH_ASSOC);
@@ -58,7 +58,10 @@
                                     <td>'.$item["Reporter"].'</td>
                                     <td>'.$item["Capacity"].'</td>
                                     <td>'.$item["Desc"].'</td>
-                                    <td>6</td>
+                                    <td>
+                                        <a href="./edit.php?id='.$item["Id"].'" class="meldingActionIcon iconEdit"><i class="fas fa-edit"></i></a>
+                                        <a href="../backend/deleteMeldingenController.php?id='.$item["Id"].'" class="meldingActionIcon IconDelete"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
                                 </tr>
                                 ';
                             }

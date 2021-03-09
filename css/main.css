@@ -170,10 +170,26 @@ label{
     width: 600px;
 }
 
+.input-group{
+  margin-bottom: 10px;
+}
 
+.meldingActionIcon{
+  font-size: 20px;
+  margin-right: 5px;
+}
 
+.iconEdit{
+  color: blue;
+}
 
+.IconDelete{
+  color: red;
+}
 
+.IconDelete:hover{
+  color: rgb(121, 0, 0);
+}
 
 
 

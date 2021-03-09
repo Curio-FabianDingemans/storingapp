@@ -4,6 +4,7 @@
 <head>
     <title>StoringApp / Meldingen</title>
     <?php require_once '../head.php'; ?>
+    <?php require_once '../backend/conn.php'; ?>
 </head>
 
 <body>
@@ -19,7 +20,53 @@
             echo "<div class='msg'>" . $_GET['msg'] . "</div>";
         } ?>
 
-        <div style="height: 300px; background: #ededed; display: flex; justify-content: center; align-items: center; color: #666666;">(hier komen de storingsmeldingen)</div>
+        <div style="display: flex; justify-content: center; align-items: center; color: #666666;">
+            <table class="table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Atractie</th>
+                        <th scope="col">Melder</th>
+                        <th scope="col">Capaciteit</th>
+                        <th scope="col">Beschijving</th>
+                        <th scope="col">Acties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $query="SELECT * FROM `meldingen` ORDER BY DateTime DESC";
+                        $statement=$conn->prepare($query);
+                        $statement->execute();
+                        $items=$statement->fetchAll(PDO::FETCH_ASSOC);
+
+                        if(count($items) == 0){
+                            echo '
+                            <tr>
+                                <td>Geen meldingen</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            ';
+                        }else{
+                            foreach($items as $item){
+                                echo '
+                                <tr>
+                                    <td>'.$item["Title"].'</td>
+                                    <td>'.$item["Atraction"].'</td>
+                                    <td>'.$item["Reporter"].'</td>
+                                    <td>'.$item["Capacity"].'</td>
+                                    <td>'.$item["Desc"].'</td>
+                                    <td>6</td>
+                                </tr>
+                                ';
+                            }
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>  
 
 </body>

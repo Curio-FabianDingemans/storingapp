@@ -2,27 +2,47 @@
 
 //Variabelen vullen
 $id = $_POST['id'];
-$title = $_POST['title'];
-$desc = $_POST['desc'];
-$atraction = $_POST['atraction'];
-$capacity = $_POST['capacity'];
-$reporter = $_POST['reporter'];
+$type = $_POST['type'];
+$overige_info = $_POST['overige_info'];
+$attractie = $_POST['attractie'];
+$capaciteit = $_POST['capaciteit'];
+$melder = $_POST['melder'];
+
+if(isset($_POST['prioriteit'])){
+    $prioriteit = 1;
+}else{
+    $prioriteit = 0;
+}
+
+if(!is_numeric($capaciteit)){
+    $capaciteit = 0;
+}
+
+if($capaciteit < 0){
+    $capaciteit = 0;
+}
+
+if($capaciteit > 1000){
+    $capaciteit = 1000;
+}
+
 //1. Verbinding
 require_once 'conn.php';
 
 //2. Query
-$query="UPDATE `meldingen` SET `Title`=:Title, `Desc`=:Desc, `Atraction`=:Atraction, `Reporter`=:Reporter, `Capacity`=:Capacity WHERE Id=:Id";
+$query="UPDATE `meldingen` SET `type`=:type, `overige_info`=:overige_info, `attractie`=:attractie, `melder`=:melder, `capaciteit`=:capaciteit, `prioriteit`=:prioriteit WHERE Id=:Id";
 
 //3. Prepare
 $statement=$conn->prepare($query);
 
 //4. Execute
 $statement->execute([
-    "Title" => $title,
-    "Desc" => $desc,
-    "Atraction" => $atraction,
-    "Reporter" => $reporter,
-    "Capacity" => $capacity,
+    "type" => $type,
+    "overige_info" => $overige_info,
+    "attractie" => $attractie,
+    "melder" => $melder,
+    "capaciteit" => $capaciteit,
+    "prioriteit" => $prioriteit,
     "Id" => $id
 ]);
 

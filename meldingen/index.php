@@ -24,17 +24,19 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Title</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Atractie</th>
                         <th scope="col">Melder</th>
                         <th scope="col">Capaciteit</th>
-                        <th scope="col">Beschijving</th>
+                        <th scope="col">Overige Informatie</th>
+                        <th scope="col">Gemeld op</th>
+                        <th scope="col">Prioriteit</th>
                         <th scope="col">Acties</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        $query="SELECT * FROM `meldingen` ORDER BY InsertDateTime DESC";
+                        $query="SELECT * FROM `meldingen` ORDER BY prioriteit DESC, gemeld_op DESC";
                         $statement=$conn->prepare($query);
                         $statement->execute();
                         $items=$statement->fetchAll(PDO::FETCH_ASSOC);
@@ -47,17 +49,27 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             ';
                         }else{
                             foreach($items as $item){
+                                if($item["prioriteit"] == 0){
+                                    $prio = "Nee";
+                                }else{
+                                    $prio = "Ja";
+                                }
                                 echo '
                                 <tr>
-                                    <td>'.$item["Title"].'</td>
-                                    <td>'.$item["Atraction"].'</td>
-                                    <td>'.$item["Reporter"].'</td>
-                                    <td>'.$item["Capacity"].'</td>
-                                    <td>'.$item["Desc"].'</td>
+                                    <td>'.$item["type"].'</td>
+                                    <td>'.$item["attractie"].'</td>
+                                    <td>'.$item["melder"].'</td>
+                                    <td>'.$item["capaciteit"].'</td>
+                                    <td>'.$item["overige_info"].'</td>
+                                    <td>'.$item["gemeld_op"].'</td>
+                                    <td>'.$prio.'</td>
                                     <td>
                                         <a href="./edit.php?id='.$item["Id"].'" class="meldingActionIcon iconEdit"><i class="fas fa-edit"></i></a>
                                         <a href="../backend/deleteMeldingenController.php?id='.$item["Id"].'" class="meldingActionIcon IconDelete"><i class="fas fa-trash-alt"></i></a>

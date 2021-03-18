@@ -9,21 +9,15 @@
     $items=$statement->fetchAll(PDO::FETCH_ASSOC);
 
     if(count($items) == 0){
-        echo '
-        <tr>
-            <td>Geen meldingen</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        ';
+        header("Location: ".$base_url."/meldingen/index.php");
+        die();
     }else{
-        $Title = $items[0]['Title'];
-        $Atraction = $items[0]['Atraction'];
-        $Reporter = $items[0]['Reporter'];
-        $Capacity = $items[0]['Capacity'];
-        $Desc = $items[0]['Desc'];
+        $type = $items[0]['type'];
+        $attractie = $items[0]['attractie'];
+        $melder = $items[0]['melder'];
+        $capaciteit = $items[0]['capaciteit'];
+        $overige_info = $items[0]['overige_info'];
+        $prioriteit = $items[0]['prioriteit'];
     }
 ?>
 <!doctype html>
@@ -44,18 +38,18 @@
         <form action="../backend/updateMeldingenController.php" method="POST">
         <input type="hidden" name="id" value="<?php echo $Id; ?>" class="form-control" required>
             <div class="input-group">
-                <label class="input-group-text" for="attractie">Title:</label>
-                <input type="text" name="title" id="title" class="form-control" value="<?php echo $Title; ?>" required>
+                <label class="input-group-text" for="type">Type:</label>
+                <input type="text" name="type" id="type" class="form-control" value="<?php echo $type; ?>" required>
             </div>
             <div class="input-group">
-                <label class="input-group-text" for="attractie">Beschijving:</label>
-                <textarea name="desc" id="desc" rows="2" class="form-control" required><?php echo $Desc; ?></textarea>
+                <label class="input-group-text" for="overige_info">Overige info:</label>
+                <textarea name="overige_info" id="overige_info" rows="2" class="form-control" required><?php echo $overige_info; ?></textarea>
             </div>
             <div class="input-group">
-                <label class="input-group-text" for="atraction">Atractie</label>
-                <select name="atraction" id="atraction" class="form-control" required>
+                <label class="input-group-text" for="attractie">Attractie:</label>
+                <select name="attractie" id="attractie" class="form-control" required>
                     <?php
-                        if($Atraction == "Baron 1898"){
+                        if($attractie == "Baron 1898"){
                             echo '
                             <option value="Baron 1898" selected>Baron 1898</option>
                             <option value="Max & Moritz">Max & Moritz</option>
@@ -65,7 +59,7 @@
                             <option value="Vogel Rock">Vogel Rock</option>
                             <option value="Villa Volta">Villa Volta</option>
                             ';
-                        }else if($Atraction == "Max & Moritz"){
+                        }else if($attractie == "Max & Moritz"){
                             echo '
                             <option value="Baron 1898">Baron 1898</option>
                             <option value="Max & Moritz" selected>Max & Moritz</option>
@@ -75,7 +69,7 @@
                             <option value="Vogel Rock">Vogel Rock</option>
                             <option value="Villa Volta">Villa Volta</option>
                             ';
-                        }else if($Atraction == "Symbolica"){
+                        }else if($attractie == "Symbolica"){
                             echo '
                             <option value="Baron 1898">Baron 1898</option>
                             <option value="Max & Moritz">Max & Moritz</option>
@@ -85,7 +79,7 @@
                             <option value="Vogel Rock">Vogel Rock</option>
                             <option value="Villa Volta">Villa Volta</option>
                             ';
-                        }else if($Atraction == "Joris En De Draak"){
+                        }else if($attractie == "Joris En De Draak"){
                             echo '
                             <option value="Baron 1898">Baron 1898</option>
                             <option value="Max & Moritz">Max & Moritz</option>
@@ -95,7 +89,7 @@
                             <option value="Vogel Rock">Vogel Rock</option>
                             <option value="Villa Volta">Villa Volta</option>
                             ';
-                        }else if($Atraction == "Python"){
+                        }else if($attractie == "Python"){
                             echo '
                             <option value="Baron 1898">Baron 1898</option>
                             <option value="Max & Moritz">Max & Moritz</option>
@@ -105,7 +99,7 @@
                             <option value="Vogel Rock">Vogel Rock</option>
                             <option value="Villa Volta">Villa Volta</option>
                             ';
-                        }else if($Atraction == "Vogel Rock"){
+                        }else if($attractie == "Vogel Rock"){
                             echo '
                             <option value="Baron 1898">Baron 1898</option>
                             <option value="Max & Moritz">Max & Moritz</option>
@@ -115,7 +109,7 @@
                             <option value="Vogel Rock" selected>Vogel Rock</option>
                             <option value="Villa Volta">Villa Volta</option>
                             ';
-                        }else if($Atraction == "Villa Volta"){
+                        }else if($attractie == "Villa Volta"){
                             echo '
                             <option value="Baron 1898">Baron 1898</option>
                             <option value="Max & Moritz">Max & Moritz</option>
@@ -141,12 +135,25 @@
             </div>
             <div class="input-group">
                 <label class="input-group-text" for="capaciteit">Capaciteit p/uur:</label>
-                <input type="number" value="0" min="0" name="capacity" id="capacity" class="form-control" value="<?php echo $Capacity; ?>" required>
+                <input type="number" value="<?php echo $capaciteit; ?>" min="0" max="1000" name="capaciteit" id="capaciteit" class="form-control" required>
             </div>
             <div class="input-group">
                 <label class="input-group-text" for="melder">Naam melder:</label>
-                <input type="text" name="reporter" id="reporter" class="form-control" value="<?php echo $Reporter; ?>" required>
+                <input type="text" name="melder" id="melder" class="form-control" value="<?php echo $melder; ?>" required>
             </div>
+            <div class="form-check">
+                <?php
+                    if($prioriteit == 1){
+                        echo '<input class="form-check-input" type="checkbox" name="prioriteit" id="prioriteit" checked>';
+                    }else{
+                        echo '<input class="form-check-input" type="checkbox" name="prioriteit" id="prioriteit">';
+                    }
+                ?>
+                <label class="form-check-label" for="prioriteit">
+                    Heeft prioriteit
+                </label>
+            </div>
+            <br>
             
             <input type="submit" value="Verstuur melding" class="btn btn-dark">
 

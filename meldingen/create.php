@@ -15,16 +15,16 @@
 
         <form action="../backend/addMeldingenController.php" method="POST">
             <div class="input-group">
-                <label class="input-group-text" for="attractie">Title:</label>
-                <input type="text" name="title" id="title" class="form-control" required>
+                <label class="input-group-text" for="type">Type:</label>
+                <input type="text" name="type" id="type" class="form-control" required>
             </div>
             <div class="input-group">
-                <label class="input-group-text" for="attractie">Beschijving:</label>
-                <textarea name="desc" id="desc" rows="2" class="form-control" required></textarea>
+                <label class="input-group-text" for="overige_info">Overige info:</label>
+                <textarea name="overige_info" id="overige_info" rows="2" class="form-control" required></textarea>
             </div>
             <div class="input-group">
-                <label class="input-group-text" for="atraction">Atractie</label>
-                <select name="atraction" id="atraction" class="form-control" required>
+                <label class="input-group-text" for="attractie">Atractie</label>
+                <select name="attractie" id="attractie" class="form-control" required>
                     <option value="Baron 1898">Baron 1898</option>
                     <option value="Max & Moritz">Max & Moritz</option>
                     <option value="Symbolica">Symbolica</option>
@@ -36,12 +36,19 @@
             </div>
             <div class="input-group">
                 <label class="input-group-text" for="capaciteit">Capaciteit p/uur:</label>
-                <input type="number" value="0" min="0" name="capacity" id="capacity" class="form-control" required>
+                <input type="number" value="0" min="0" max="1000" name="capaciteit" id="capaciteit" class="form-control" required>
             </div>
             <div class="input-group">
                 <label class="input-group-text" for="melder">Naam melder:</label>
-                <input type="text" name="reporter" id="reporter" class="form-control" required>
+                <input type="text" name="melder" id="melder" class="form-control" required>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="prioriteit" id="prioriteit">
+                <label class="form-check-label" for="prioriteit">
+                    Heeft prioriteit
+                </label>
+            </div>
+            <br>
             
             <input type="submit" value="Verstuur melding" class="btn btn-dark">
 

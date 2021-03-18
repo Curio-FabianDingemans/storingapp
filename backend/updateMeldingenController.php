@@ -29,6 +29,10 @@ if($capaciteit > 1000){
 //1. Verbinding
 require_once 'conn.php';
 
+if(is_numeric($capacity)){
+    $capacity = 0;
+}
+
 //2. Query
 $query="UPDATE `meldingen` SET `type`=:type, `overige_info`=:overige_info, `attractie`=:attractie, `melder`=:melder, `capaciteit`=:capaciteit, `prioriteit`=:prioriteit WHERE Id=:Id";
 

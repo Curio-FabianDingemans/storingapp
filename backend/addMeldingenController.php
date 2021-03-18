@@ -29,11 +29,6 @@ if($capaciteit > 1000){
 //1. Verbinding
 require_once 'conn.php';
 
-
-if(is_numeric($capacity)){
-    $capacity = 0;
-}
-
 //2. Query
 $query="INSERT INTO `meldingen`(`type`, `overige_info`, `attractie`, `melder`, `capaciteit`, `gemeld_op`, `prioriteit`) VALUES(:type, :overige_info, :attractie, :melder, :capaciteit, :gemeld_op, :prioriteit)";
 

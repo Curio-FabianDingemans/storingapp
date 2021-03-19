@@ -39,7 +39,16 @@
         <input type="hidden" name="id" value="<?php echo $Id; ?>" class="form-control" required>
             <div class="input-group">
                 <label class="input-group-text" for="type">Type:</label>
-                <input type="text" name="type" id="type" class="form-control" value="<?php echo $type; ?>" required>
+                <input class="form-control" list="datalistOptions" id="type" name="type" value="<?php echo $type; ?>" required>
+                <datalist id="datalistOptions">
+                    <option value="Achtbaan">
+                    <option value="Draaiend">
+                    <option value="Kinder">
+                    <option value="Horeca">
+                    <option value="Show">
+                    <option value="Water">
+                    <option value="Overig">
+                </datalist>
             </div>
             <div class="input-group">
                 <label class="input-group-text" for="overige_info">Overige info:</label>

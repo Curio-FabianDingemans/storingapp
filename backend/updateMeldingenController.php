@@ -8,6 +8,23 @@ $attractie = $_POST['attractie'];
 $capaciteit = $_POST['capaciteit'];
 $melder = $_POST['melder'];
 
+if(empty($type)){
+    echo "Type mag niet leeg zijn";
+}
+
+if(empty($overige_info)){
+    echo "Overige info mag niet leeg zijn";
+}
+
+if(empty($melder)){
+    echo "Melder mag niet leeg zijn";
+}
+
+$atracties = ["Baron 1898", "Max & Moritz", "Symbolica", "Joris En De Draak", "Python", "Vogel Rock", "Villa Volta"];
+if(!in_array($attractie, $atracties)){
+    echo "Ongeldige attractie";
+}
+
 if(isset($_POST['prioriteit'])){
     $prioriteit = 1;
 }else{

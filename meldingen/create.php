@@ -16,19 +16,10 @@
         <form action="../backend/addMeldingenController.php" method="POST">
             <div class="input-group">
                 <label class="input-group-text" for="type">Type:</label>
-                <input class="form-control" list="datalistOptions" id="type" name="type" required>
-                <datalist id="datalistOptions">
-                    <option value="Achtbaan">
-                    <option value="Draaiend">
-                    <option value="Kinder">
-                    <option value="Horeca">
-                    <option value="Show">
-                    <option value="Water">
-                    <option value="Overig">
-                </datalist>
+                <input type="text" name="type" id="type" class="form-control" required>
             </div>
             <div class="input-group">
-                <label class="input-group-text" for="overige_info">Overige info:</label>
+                <label class="input-group-text" for="overige_info">Beschijving:</label>
                 <textarea name="overige_info" id="overige_info" rows="2" class="form-control" required></textarea>
             </div>
             <div class="input-group">

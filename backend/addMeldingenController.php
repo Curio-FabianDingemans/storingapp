@@ -6,7 +6,7 @@ $overige_info = $_POST['overige_info'];
 $attractie = $_POST['attractie'];
 $capaciteit = $_POST['capaciteit'];
 $melder = $_POST['melder'];
-$gemeld_op = date('Y-m-d H:i:s', time());
+$datetime = date('Y-m-d H:i:s', time());
 
 if(empty($type)){
     echo "Type mag niet leeg zijn";
@@ -46,12 +46,8 @@ if($capaciteit > 1000){
 //1. Verbinding
 require_once 'conn.php';
 
-if(is_numeric($capacity)){
-    $capacity = 0;
-}
-
 //2. Query
-$query="INSERT INTO `meldingen`(`type`, `overige_info`, `attractie`, `melder`, `capaciteit`, `gemeld_op`, `prioriteit`) VALUES(:type, :overige_info, :attractie, :melder, :capaciteit, :gemeld_op, :prioriteit)";
+$query="INSERT INTO `meldingen`(`type`, `overige_info`, `attractie`, `melder`, `capaciteit`, `prioriteit`, `gemeld_op`) VALUES(:type, :overige_info, :attractie, :melder, :capaciteit, :prioriteit, :gemeld_op)";
 
 //3. Prepare
 $statement=$conn->prepare($query);
@@ -63,8 +59,8 @@ $statement->execute([
     "attractie" => $attractie,
     "melder" => $melder,
     "capaciteit" => $capaciteit,
-    "gemeld_op" => $gemeld_op,
-    "prioriteit" => $prioriteit
+    "prioriteit" => $prioriteit,
+    "gemeld_op" => $datetime
 ]);
 
 header("Location: ../meldingen/index.php");

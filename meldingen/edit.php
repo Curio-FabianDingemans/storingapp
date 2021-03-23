@@ -39,112 +39,20 @@
         <input type="hidden" name="id" value="<?php echo $Id; ?>" class="form-control" required>
             <div class="input-group">
                 <label class="input-group-text" for="type">Type:</label>
-                <input class="form-control" list="datalistOptions" id="type" name="type" value="<?php echo $type; ?>" required>
-                <datalist id="datalistOptions">
-                    <option value="Achtbaan">
-                    <option value="Draaiend">
-                    <option value="Kinder">
-                    <option value="Horeca">
-                    <option value="Show">
-                    <option value="Water">
-                    <option value="Overig">
-                </datalist>
+                <input type="text" class="form-control" value="<?php echo $type; ?>" required readonly>
             </div>
             <div class="input-group">
-                <label class="input-group-text" for="overige_info">Overige info:</label>
+                <label class="input-group-text" for="overige_info">Beschijving:</label>
                 <textarea name="overige_info" id="overige_info" rows="2" class="form-control" required><?php echo $overige_info; ?></textarea>
             </div>
             <div class="input-group">
-                <label class="input-group-text" for="attractie">Attractie:</label>
-                <select name="attractie" id="attractie" class="form-control" required>
-                    <?php
-                        if($attractie == "Baron 1898"){
-                            echo '
-                            <option value="Baron 1898" selected>Baron 1898</option>
-                            <option value="Max & Moritz">Max & Moritz</option>
-                            <option value="Symbolica">Symbolica</option>
-                            <option value="Joris En De Draak">Joris En De Draak</option>
-                            <option value="Python">Python</option>
-                            <option value="Vogel Rock">Vogel Rock</option>
-                            <option value="Villa Volta">Villa Volta</option>
-                            ';
-                        }else if($attractie == "Max & Moritz"){
-                            echo '
-                            <option value="Baron 1898">Baron 1898</option>
-                            <option value="Max & Moritz" selected>Max & Moritz</option>
-                            <option value="Symbolica">Symbolica</option>
-                            <option value="Joris En De Draak">Joris En De Draak</option>
-                            <option value="Python">Python</option>
-                            <option value="Vogel Rock">Vogel Rock</option>
-                            <option value="Villa Volta">Villa Volta</option>
-                            ';
-                        }else if($attractie == "Symbolica"){
-                            echo '
-                            <option value="Baron 1898">Baron 1898</option>
-                            <option value="Max & Moritz">Max & Moritz</option>
-                            <option value="Symbolica" selected>Symbolica</option>
-                            <option value="Joris En De Draak">Joris En De Draak</option>
-                            <option value="Python">Python</option>
-                            <option value="Vogel Rock">Vogel Rock</option>
-                            <option value="Villa Volta">Villa Volta</option>
-                            ';
-                        }else if($attractie == "Joris En De Draak"){
-                            echo '
-                            <option value="Baron 1898">Baron 1898</option>
-                            <option value="Max & Moritz">Max & Moritz</option>
-                            <option value="Symbolica">Symbolica</option>
-                            <option value="Joris En De Draak" selected>Joris En De Draak</option>
-                            <option value="Python">Python</option>
-                            <option value="Vogel Rock">Vogel Rock</option>
-                            <option value="Villa Volta">Villa Volta</option>
-                            ';
-                        }else if($attractie == "Python"){
-                            echo '
-                            <option value="Baron 1898">Baron 1898</option>
-                            <option value="Max & Moritz">Max & Moritz</option>
-                            <option value="Symbolica">Symbolica</option>
-                            <option value="Joris En De Draak">Joris En De Draak</option>
-                            <option value="Python" selected>Python</option>
-                            <option value="Vogel Rock">Vogel Rock</option>
-                            <option value="Villa Volta">Villa Volta</option>
-                            ';
-                        }else if($attractie == "Vogel Rock"){
-                            echo '
-                            <option value="Baron 1898">Baron 1898</option>
-                            <option value="Max & Moritz">Max & Moritz</option>
-                            <option value="Symbolica">Symbolica</option>
-                            <option value="Joris En De Draak">Joris En De Draak</option>
-                            <option value="Python">Python</option>
-                            <option value="Vogel Rock" selected>Vogel Rock</option>
-                            <option value="Villa Volta">Villa Volta</option>
-                            ';
-                        }else if($attractie == "Villa Volta"){
-                            echo '
-                            <option value="Baron 1898">Baron 1898</option>
-                            <option value="Max & Moritz">Max & Moritz</option>
-                            <option value="Symbolica">Symbolica</option>
-                            <option value="Joris En De Draak">Joris En De Draak</option>
-                            <option value="Python">Python</option>
-                            <option value="Vogel Rock">Vogel Rock</option>
-                            <option value="Villa Volta" selected>Villa Volta</option>
-                            ';
-                        }else{
-                            echo '
-                            <option value="Baron 1898">Baron 1898</option>
-                            <option value="Max & Moritz">Max & Moritz</option>
-                            <option value="Symbolica">Symbolica</option>
-                            <option value="Joris En De Draak">Joris En De Draak</option>
-                            <option value="Python">Python</option>
-                            <option value="Vogel Rock">Vogel Rock</option>
-                            <option value="Villa Volta">Villa Volta</option>
-                            ';
-                        }
-                    ?>
-                </select>
+                <label class="input-group-text" for="attractie">Atractie</label>
+                <input type="text" class="form-control" value="<?php echo $attractie; ?>" required readonly>
+                
             </div>
             <div class="input-group">
                 <label class="input-group-text" for="capaciteit">Capaciteit p/uur:</label>
-                <input type="number" value="<?php echo $capaciteit; ?>" min="0" max="1000" name="capaciteit" id="capaciteit" class="form-control" required>
+                <input type="number" value="0" min="0" max="1000" name="capaciteit" id="capaciteit" class="form-control" value="<?php echo $capaciteit; ?>" required>
             </div>
             <div class="input-group">
                 <label class="input-group-text" for="melder">Naam melder:</label>

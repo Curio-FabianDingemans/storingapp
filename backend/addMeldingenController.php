@@ -8,21 +8,31 @@ $capaciteit = $_POST['capaciteit'];
 $melder = $_POST['melder'];
 $datetime = date('Y-m-d H:i:s', time());
 
-if(empty($type)){
-    echo "Type mag niet leeg zijn";
+if($type == "none"){
+    echo "Kies een typen";
+    die();
+}
+
+$types = ["Achtbaan", "Draaiende atractie", "Kinderatractie", "Horeca", "Parkshows", "Waterattractie", "Overig"];
+if(!in_array($type, $types)){
+    echo "Ongeldige type";
+    die();
 }
 
 if(empty($overige_info)){
     echo "Overige info mag niet leeg zijn";
+    die();
 }
 
 if(empty($melder)){
     echo "Melder mag niet leeg zijn";
+    die();
 }
 
 $atracties = ["Baron 1898", "Max & Moritz", "Symbolica", "Joris En De Draak", "Python", "Vogel Rock", "Villa Volta"];
 if(!in_array($attractie, $atracties)){
     echo "Ongeldige attractie";
+    die();
 }
 
 if(isset($_POST['prioriteit'])){

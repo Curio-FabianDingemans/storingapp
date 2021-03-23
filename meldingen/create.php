@@ -16,7 +16,16 @@
         <form action="../backend/addMeldingenController.php" method="POST">
             <div class="input-group">
                 <label class="input-group-text" for="type">Type:</label>
-                <input type="text" name="type" id="type" class="form-control" required>
+                <select name="type" id="type" class="form-control" required>
+                    <option value="none">- Kies een optie -</option>
+                    <option value="Achtbaan">Achtbaan</option>
+                    <option value="Draaiende atractie">Draaiende atractie</option>
+                    <option value="Kinderatractie">Kinderatractie</option>
+                    <option value="Horeca">Horeca</option>
+                    <option value="Parkshows">Parkshows</option>
+                    <option value="Waterattractie">Waterattractie</option>
+                    <option value="Overig">Overig</option>
+                </select>
             </div>
             <div class="input-group">
                 <label class="input-group-text" for="overige_info">Beschijving:</label>

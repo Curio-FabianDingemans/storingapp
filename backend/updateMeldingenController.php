@@ -10,10 +10,12 @@ require_once 'conn.php';
 
 if(empty($overige_info)){
     echo "Overige info mag niet leeg zijn";
+    die();
 }
 
 if(empty($melder)){
     echo "Melder mag niet leeg zijn";
+    die();
 }
 
 if(isset($_POST['prioriteit'])){

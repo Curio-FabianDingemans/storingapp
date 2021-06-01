@@ -1,4 +1,14 @@
 <?php
+    require_once '../backend/sessionController.php';
+    
+    if(!isset($_SESSION['Id'])){
+        $_SESSION["error-type"] = "info";
+        $_SESSION["error-msg"] = "Je moet eerst inloggen";
+        header("Location: ../login.php");
+        die();
+    }
+?>
+<?php
     require_once '../backend/conn.php';
     $Id = $_GET['id'];  
     $query="SELECT * FROM `meldingen` WHERE Id=:Id";

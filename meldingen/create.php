@@ -1,3 +1,13 @@
+<?php
+    require_once '../backend/sessionController.php';
+    
+    if(!isset($_SESSION['Id'])){
+        $_SESSION["error-type"] = "info";
+        $_SESSION["error-msg"] = "Je moet eerst inloggen";
+        header("Location: ../login.php");
+        die();
+    }
+?>
 <!doctype html>
 <html lang="nl">
 

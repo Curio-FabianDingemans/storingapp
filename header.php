@@ -8,7 +8,16 @@
             <a href="<?php echo $base_url; ?>/meldingen/index.php">Meldingen</a>
         </nav>
         <div>
-            <a href="#" style="color: lightgrey;">Inloggen</a>
+            <?php
+                if(!isset($_SESSION['Id'])){
+                    echo '<a href="'. $base_url.'/login.php">Inloggen</a>';
+                }else{
+                    echo '
+                    <a>'.$_SESSION['username'].'</a>
+                    <a href="'.$base_url.'/backend/sessionController.php?logout=">Uitloggen</a>
+                    ';
+                }
+            ?>
         </div>
     </div>
 </header>

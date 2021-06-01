@@ -1,3 +1,6 @@
+<?php
+    require_once './backend/sessionController.php';
+?>
 <!doctype html>
 <html lang="nl">
 
